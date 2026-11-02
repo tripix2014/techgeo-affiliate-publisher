@@ -1,0 +1,91 @@
+{
+  "slug": "buildah-vs-containerd-for-platform-engineering",
+  "status": "reviewed",
+  "locale": "en",
+  "title": "Buildah vs containerd for platform engineering teams: a technical decision guide",
+  "meta_description": "Compare Buildah and containerd for platform engineering teams across architecture, operations, workflow fit, and practical adoption trade-offs using official documenta...",
+  "eyebrow": "Containers decision brief",
+  "intro": "This comparison examines Buildah and containerd for platform engineering teams. The decision lens is standardized interfaces, automation, and shared operational patterns. It uses the maintained catalog and each project's official documentation to separate architectural differences from implementation details that should be verified before adoption.",
+  "verdict": "Start with Buildah when its documented model and strongest fit align with a reusable internal platform for multiple product teams. Prefer containerd when its operating model better matches that requirement. Validate the shortlist with a workload-specific proof of concept before committing production data or delivery pipelines.",
+  "updated_at": "2026-11-02",
+  "reviewed_by": "StackSignal structured catalog",
+  "criteria": [
+    {
+      "key": "model",
+      "label": "Technical model",
+      "description": "The product's primary architectural role."
+    },
+    {
+      "key": "operations",
+      "label": "Operating model",
+      "description": "The operational boundary described by the project."
+    },
+    {
+      "key": "fit",
+      "label": "Strongest fit",
+      "description": "The use case emphasized in the maintained catalog."
+    },
+    {
+      "key": "audience",
+      "label": "Audience lens",
+      "description": "Decision priority for platform engineering teams."
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Buildah",
+      "url": "https://buildah.io/",
+      "summary": "A specialized tool for building OCI container images from Dockerfiles or scripted commands without requiring a long-running daemon.",
+      "specs": {
+        "model": "Daemonless OCI image builder",
+        "operations": "Integrate image build commands into local or CI workflows",
+        "fit": "Focused, scriptable container image creation",
+        "audience": "Evaluate against: standardized interfaces, automation, and shared operational patterns"
+      }
+    },
+    {
+      "name": "containerd",
+      "url": "https://containerd.io/docs/",
+      "summary": "An industry-standard container runtime focused on image transfer, storage, execution, supervision, and integration with higher-level systems.",
+      "specs": {
+        "model": "Low-level container runtime daemon",
+        "operations": "Integrate and maintain runtime services through higher-level tooling",
+        "fit": "Platforms that need a focused runtime beneath orchestration layers",
+        "audience": "Evaluate against: standardized interfaces, automation, and shared operational patterns"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "question": "Which is easier to evaluate first for platform engineering teams?",
+      "answer": "Begin with the option whose operating model already matches standardized interfaces, automation, and shared operational patterns. Use a small proof of concept with the same deployment constraints, team access, and failure modes expected in production."
+    },
+    {
+      "question": "Can Buildah and containerd be tested with the same benchmark?",
+      "answer": "Only partly. Measure shared outcomes such as setup time, reliability, maintenance effort, and task completion, then add product-specific checks because the two options can expose different architectural boundaries."
+    },
+    {
+      "question": "What should be verified before making the final choice?",
+      "answer": "Confirm current support policies, security controls, deployment requirements, integration limits, and upgrade procedures in the official documentation. Recheck any time-sensitive limits immediately before adoption."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Buildah official documentation",
+      "publisher": "Buildah",
+      "url": "https://buildah.io/"
+    },
+    {
+      "label": "containerd official documentation",
+      "publisher": "containerd",
+      "url": "https://containerd.io/docs/"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Docker Deep Dive",
+      "asin": "B01LXWQUFF",
+      "note": "Background reading on container images, runtimes, networking, and day-to-day container operations."
+    }
+  ]
+}
